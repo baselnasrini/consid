@@ -1,0 +1,14 @@
+server: 
+  port: 3303
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/consid?useSSL=false
+    username: root
+    password: mysqlpass
+  
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
