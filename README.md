@@ -1,6 +1,6 @@
-# consid
+# Consid - code test
 
-##### This project is done by Mohammed Basel Nasrini as a code test for Fortnox 
+##### This project is done by Mohammed Basel Nasrini as a code test for Consid 
 The backend is run at the port 3303 and will start working on front-end soon
 
 #### Backend:
