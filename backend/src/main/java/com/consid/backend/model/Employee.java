@@ -15,34 +15,47 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 @ToString
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of = "id")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter
+	@Getter
+	@Setter
 	private int id;
-	
-	@Getter @Setter @NotNull
+
+	@Getter
+	@Setter
+	@NotNull
 	private String firstName;
-	
-	@Getter @Setter @NotNull
+
+	@Getter
+	@Setter
+	@NotNull
 	private String lastName;
-	
-	@Getter @Setter @NotNull
+
+	@Getter
+	@Setter
 	private double salary;
+
+	@Getter
+	@Setter
+	@NotNull
+	private double salaryRank;
 	
-	@Getter @Setter
+	@Getter
+	@Setter
 	private boolean ceo;
-	
-	@Getter @Setter
+
+	@Getter
+	@Setter
 	private boolean manager;
-	
-	@Getter @Setter
+
+	@Getter
+	@Setter
 	private int managerId;
-	
+
 }

@@ -14,7 +14,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
 
 	  List<Employee> findByLastName(String lastname);
 
-	  List<Employee> findByCeoTrue();
+	  Employee findByCeoTrue();
 	  
 	  List<Employee> findByManagerTrue();
 
