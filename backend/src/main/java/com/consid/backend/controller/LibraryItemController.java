@@ -56,13 +56,18 @@ public class LibraryItemController {
 		if (!optionalLibraryItem.isPresent()) {
 			return ResponseEntity.badRequest().build();
 		}
+		
+		Category temp = new Category();
+		temp.setCategoryName(optionalLibraryItem.get().getCategory().getCategoryName());
+		temp.setId(optionalLibraryItem.get().getCategory().getId());
+		optionalLibraryItem.get().setCategory(temp);
 
 		return ResponseEntity.ok(optionalLibraryItem.get());
 	}
 
 	@PostMapping("/add")
 	ResponseEntity<String> addLibraryItem(@Valid @RequestBody LibraryItem libraryItem) throws URISyntaxException {
-
+		libraryItem.setId(0);
 		Optional<Category> optionalCateogry = categoryRepo.findById(libraryItem.getCategory().getId());
 		if (!optionalCateogry.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No such category in the database");

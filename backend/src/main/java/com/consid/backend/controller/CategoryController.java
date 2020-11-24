@@ -51,11 +51,19 @@ public class CategoryController {
 		if (!optionalCategory.isPresent()) {
 			return ResponseEntity.badRequest().build();
 		}
+		List<LibraryItem> libraryItemsList = new ArrayList <LibraryItem>(optionalCategory.get().getLibraryItems());
+		for (LibraryItem l : libraryItemsList) {
+			Category tempCat = new Category();
+			tempCat.setCategoryName(l.getCategory().getCategoryName());
+			tempCat.setId(l.getCategory().getId());
+			l.setCategory(tempCat);
+		}
 		return ResponseEntity.ok(optionalCategory.get());
 	}
 
 	@PostMapping("/add")
 	ResponseEntity<String> addCategory(@Valid @RequestBody Category category) throws URISyntaxException {
+		category.setId(0);
 		Category result = categoryRepo.save(category);
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body("Category " + result.getCategoryName() + " has be successfuly added");

@@ -51,7 +51,7 @@ public class EmpolyeeController {
 
 	@PostMapping("/add")
 	ResponseEntity<String> addEmployee(@Valid @RequestBody Employee employee) throws URISyntaxException {
-
+		employee.setId(0);
 		if (!checkInput(employee)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong in the given values");
 		}
