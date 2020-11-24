@@ -51,20 +51,18 @@ public class EmpolyeeController {
 
 	@PostMapping("/add")
 	ResponseEntity<String> addEmployee(@Valid @RequestBody Employee employee) throws URISyntaxException {
-		System.out.println(employee);
-		String role = getRole(employee);
-		Optional<Employee> optionalEmpoloyee = employeeRepo.findById(employee.getId());
 
 		if (!checkInput(employee)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong in the given values");
 		}
-
-		// Optional<Employee> optionalEmpoloyee = setEmployeeRole(employee, role);
-
+		
+		employee.setSalary(SalaryCalculator.calSalary(employee));
+		
 		Employee result = employeeRepo.save(employee);
+		String role = getRole(result);
 		System.out.println(result);
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body("Employee: " + result.getFirstName() + " " + result.getLastName() + " has be successfuly added");
+				.body(role + ": " + result.getFirstName() + " " + result.getLastName() + " has been successfuly added");
 	}
 
 	@GetMapping("/{lastname}")
