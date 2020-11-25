@@ -5,7 +5,7 @@ The backend is run at the port 3303 and will start working on front-end soon
 
 ### API:
 You can check the API used for connection between front and back-end in the following link:
-https://documenter.getpostman.com/view/13601880/TVewYPDB#e5c6449a-8d2e-4f86-8098-e78fba4a2115
+https://documenter.getpostman.com/view/13601880/TVewYPDB
 
 #### Backend:
 You can import the backend as a Maven project.
